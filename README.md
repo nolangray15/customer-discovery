@@ -17,4 +17,4 @@ For the LinkedIn search URL, this is what we would do:
 1. Navigate to a LinkedIn search page and add multiple companies to the filters
 2. Type in a job title or keyword into the title field.
 
-If there are any problems, feel free to reach out or create a GitHub issue and I'll try to get around to it.
+If there are any problems, feel free to reach out or create a GitHub issue and I'll try to get around to it (or submit a PR).
