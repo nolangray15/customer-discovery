@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="index.css">
+  <script src="./scraper.js"></script>
+  <script>
+    const Store = require('electron-store');
+    const store = new Store();
+    function invite() {
+      var form = document.getElementById("form")
+      var email = form.email.value;
+      var password = form.password.value;
+      var link = form.link.value;
+      var invites = form.invites.value;
+      var message = form.message.value;
+      var invitesSent = store.get('invitesSent')
+      store.set('invitesSent', 0)
+      store.set('invitesSent', invitesSent + parseInt(invites))
+      var lastSend = store.set('lastSend', new Date())
+      document.getElementById("numInvites").max = store.get('invitesSent')
+      document.getElementById("invitesParagraph").innerHTML = `${store.get('invitesSent')} invites sent`
+      return main(email, password, link, invites, message);
+    }
+  </script>
+</head>
+
+<body>
+  <img src="./assets/logo.png" alt="Customer Discovery" class="center">
+  <form id="form" onsubmit="return invite();">
+    <label class="form-field-label"><strong>Username</strong></label>
+    <br><br>
+    <input type="text" class="form-text-field" name="email" required>
+    <br><br>
+    <label class="form-field-label"><strong>Password</strong></label>
+    <br><br>
+    <input type="password" class="form-text-field" name="password" required>
+    <br><br>
+    <label class="form-field-label"><strong>Paste</strong> your search URL.</label>
+    <br><br>
+    <input type="text" class="form-text-field" name="link" id="searchUrl" required>
+    <br><br>
+    <label class="form-field-label"><strong>Select</strong> number of invites.</label>
+    <br><br>
+    <input type="number" min="0" class="form-text-field" name="invites" id="numInvites" placeholder="0"
+      required>
+    <br><br>
+    <label class="form-field-label"><strong>Write</strong> your message.</label>
+    <br><br>
+    <textarea name="message" class="form-text-area" rows="10" cols="30" id="message"
+      placeholder="Maximum 300 characters in length. Personalize the message using {first_name} or {last_name}."
+      required></textarea>
+    <br><br>
+    <input type="submit" class="form-submit-button" value="Send invites">
+    <br>
+    <p id="invitesParagraph"> 0/100 invites sent </p>
+  </form>
+  <script src="./renderer.js"></script>
+</body>
+
+<script>
+  let lastSend = new Date(store.get('lastSend'))
+  let now = new Date()
+  let diffMilliseconds = Math.abs(now - lastSend)
+  if ((diffMilliseconds / (1000 * 60)).toFixed(1) > 1440) {
+    store.set('lastSend', now)
+    store.set('invitesSent', 0)
+  }
+  if (store.get('invitesSent') == undefined) { store.set('invitesSent', 0) }
+  var maxInvitesAllowed = 1000
+  // var maxInvitesAllowed = 100 - store.get('invitesSent')
+  document.getElementById("numInvites").max = maxInvitesAllowed
+  document.getElementById("invitesParagraph").innerHTML = `${store.get('invitesSent')} invites sent`
+
+</script>
+
+</html>

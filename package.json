@@ -1,0 +1,40 @@
+{
+  "name": "customer-discovery",
+  "productName": "Customer Discovery Pro",
+  "version": "1.0.0",
+  "description": "A LinkedIn scraper designed for customer discovery",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron .",
+    "package-mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --prune=true --out=release-builds/mac",
+    "package-win": "electron-packager . customer-discovery --overwrite --asar=true --platform=win32 --arch=ia32 --prune=true --out=release-builds/windows --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"Customer Discovery Pro\"",
+    "package-linux": "electron-packager . customer-discovery --overwrite --platform=linux --arch=x64 --prune=true --out=release-builds/linux",
+    "installer-mac": "electron-installer-dmg ./release-builds/Customer\\ Discovery Pro-darwin-x64/Customer\\ Discovery\\ Pro.app customer-discovery --out=release-builds/mac/dmg",
+    "installer-win": "node installers/windows/create-windows-installer.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nolangray15/customer-discovery.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nolangray15/customer-discovery/issues"
+  },
+  "homepage": "https://github.com/nolangray15/customer-discovery#readme",
+  "devDependencies": {
+    "axios": "^0.19.0",
+    "electron": "^6.0.1",
+    "electron-builder": "^21.2.0",
+    "electron-installer-dmg": "^3.0.0",
+    "electron-packager": "^14.0.4",
+    "electron-winstaller": "^4.0.0",
+    "puppeteer": "^1.19.0"
+  },
+  "dependencies": {
+    "electron-reload": "^1.5.0",
+    "electron-store": "^4.0.0",
+    "selenium-webdriver": "^4.0.0-alpha.4"
+  }
+}

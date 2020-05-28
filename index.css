@@ -1,0 +1,79 @@
+@font-face {
+	font-family: 'Roboto';
+	src: url('./assets/Roboto-Regular.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'Roboto';
+	src: url('./assets/Roboto-Bold.ttf') format('truetype');
+	font-weight: bold;
+	font-style: normal;
+}
+
+body { 
+    font-family: 'Roboto', sans-serif; 
+    -webkit-app-region: drag;
+    color: #0077B5;
+    background-color: #f6f9fd;
+    padding-top: 56px;
+}
+
+form {
+    padding-left: 40px;
+}
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    margin-bottom: 40px;
+}
+
+.form-text-field, .form-text-area {
+    width: 640px;
+    border-radius: 4px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #eaf2fd;
+    padding: 16px;
+    font-size: 18px;
+}
+
+.form-text-field {
+    height: 16px;
+}
+
+.form-text-area {
+    resize: none;
+}
+
+.form-submit-button {
+    position: static;
+    display: inline-block;
+    height: 56px;
+    padding: 16px 32px;
+    flex: 0 auto;
+    border-radius: 4px;
+    background-color: #0077B5;
+    box-shadow: 0 8px 16px 0 rgba(40,43,49,.1);
+    transition: background-color .2s cubic-bezier(.55,.085,.68,.53),box-shadow .2s cubic-bezier(.55,.085,.68,.53),-webkit-transform .2s cubic-bezier(.455,.03,.515,.955);
+    transition: transform .2s cubic-bezier(.455,.03,.515,.955),background-color .2s cubic-bezier(.55,.085,.68,.53),box-shadow .2s cubic-bezier(.55,.085,.68,.53);
+    transition: transform .2s cubic-bezier(.455,.03,.515,.955),background-color .2s cubic-bezier(.55,.085,.68,.53),box-shadow .2s cubic-bezier(.55,.085,.68,.53),-webkit-transform .2s cubic-bezier(.455,.03,.515,.955);
+    color: #fff;
+    font-weight: bold;
+    font-size: 18px;
+    text-align: center;
+    margin-top:24px; 
+    margin-bottom:24px; 
+}
+
+.form-field-label {
+    margin-bottom: 8px;
+    font-weight: 300;
+}
+
+*:focus {
+    outline: none;
+}
