@@ -7,7 +7,7 @@ What this does:
 ### How to use:
 - Currently, the only way to run this is probably just cloning the directory and running it locally:
 ```
-cd linkedin-bot
+cd customer-discovery
 npm install
 npm start
 ```
